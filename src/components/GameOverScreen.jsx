@@ -13,10 +13,11 @@ export default function GameOverScreen() {
   }
   
   return (
-    <div className="w-full max-w-2xl mx-auto text-center">
-      <h1 className="text-6xl font-bold mb-4 font-mono text-gh-false">
-        GAME OVER
-      </h1>
+    <div className="w-full min-h-screen flex flex-col items-center justify-center px-4 py-8">
+      <div className="w-full max-w-2xl mx-auto text-center">
+        <h1 className="text-6xl font-bold mb-4 font-mono text-gh-false">
+          GAME OVER
+        </h1>
       
       <div className="bg-black/30 border border-gh-text/20 rounded-lg p-8 mb-8">
         <h2 className="text-3xl font-bold mb-8">Estatísticas da Run</h2>
@@ -50,6 +51,7 @@ export default function GameOverScreen() {
         >
           NOVA RUN
         </button>
+      </div>
       </div>
     </div>
   )

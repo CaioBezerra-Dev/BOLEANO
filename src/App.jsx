@@ -1,4 +1,5 @@
 import { useGameStore } from './store/useGameStore'
+import HomeScreen from './components/HomeScreen'
 import ConfigScreen from './components/ConfigScreen'
 import GameScreen from './components/GameScreen'
 import GameOverScreen from './components/GameOverScreen'
@@ -8,6 +9,7 @@ function App() {
   
   return (
     <>
+      {gameState === 'home' && <HomeScreen />}
       {gameState === 'config' && <ConfigScreen />}
       {gameState === 'playing' && <GameScreen />}
       {gameState === 'gameover' && <GameOverScreen />}

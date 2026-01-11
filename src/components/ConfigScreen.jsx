@@ -52,13 +52,14 @@ export default function ConfigScreen() {
   )
   
   return (
-    <div className="w-full max-w-2xl mx-auto">
-      <h1 className="text-5xl font-bold text-center mb-4 font-mono">
-        🧠 BOLEANO
-      </h1>
-      <p className="text-xl text-center mb-12 text-gh-text/70">
-        O Compilador Mental
-      </p>
+    <div className="w-full min-h-screen flex flex-col items-center justify-center px-4 py-8">
+      <div className="w-full max-w-2xl">
+        <h1 className="text-5xl font-bold text-center mb-4 font-mono">
+          BOLEANO
+        </h1>
+        <p className="text-xl text-center mb-12 text-gh-text/70">
+          O Compilador Mental
+        </p>
       
       <div className="bg-black/30 border border-gh-text/20 rounded-lg p-8 mb-8">
         <h2 className="text-2xl font-bold mb-6">Selecione suas Linguagens</h2>
@@ -130,6 +131,7 @@ export default function ConfigScreen() {
       <div className="mt-8 text-center text-gh-text/50 text-sm">
         <p>Use as teclas: <kbd className="px-2 py-1 bg-black/30 rounded">0</kbd> ou <kbd className="px-2 py-1 bg-black/30 rounded">←</kbd> para FALSE</p>
         <p><kbd className="px-2 py-1 bg-black/30 rounded">1</kbd> ou <kbd className="px-2 py-1 bg-black/30 rounded">→</kbd> para TRUE</p>
+      </div>
       </div>
     </div>
   )

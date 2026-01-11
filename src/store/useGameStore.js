@@ -2,7 +2,7 @@ import { create } from 'zustand'
 
 export const useGameStore = create((set, get) => ({
   // Game state
-  gameState: 'config', // 'config' | 'playing' | 'gameover'
+  gameState: 'home', // 'home' | 'config' | 'playing' | 'gameover'
   
   // Player profile
   profile: {
@@ -30,6 +30,7 @@ export const useGameStore = create((set, get) => ({
   
   // Actions
   setProfile: (profile) => set({ profile }),
+  setGameState: (state) => set({ gameState: state }),
   
   startGame: () => {
     // Limpa timeouts anteriores se existirem
@@ -149,17 +150,28 @@ export const useGameStore = create((set, get) => ({
     }
     
     const timeout = setTimeout(() => {
-      set({ 
-        feedback: null, 
-        feedbackTimeout: null,
-        questionTimeout: null,
-        timeoutInterval: null,
-        timeRemaining: 20
-      })
+      const currentState = get()
       
       // Check game over
       if (newLives === 0) {
-        set({ gameState: 'gameover' })
+        set({ 
+          feedback: null, 
+          feedbackTimeout: null,
+          questionTimeout: null,
+          timeoutInterval: null,
+          timeRemaining: 20,
+          gameState: 'gameover'
+        })
+      } else {
+        // Se ainda há vidas, limpa a pergunta atual para que a próxima seja carregada
+        set({ 
+          feedback: null, 
+          feedbackTimeout: null,
+          questionTimeout: null,
+          timeoutInterval: null,
+          timeRemaining: 20,
+          currentQuestion: null
+        })
       }
     }, 300)
     
@@ -187,7 +199,7 @@ export const useGameStore = create((set, get) => ({
     }
     
     set({
-      gameState: 'config',
+      gameState: 'home',
       score: 0,
       lives: 3,
       startTime: null,
