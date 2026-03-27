@@ -1,0 +1,19 @@
+{
+  "name": "Boleano — O Compilador Mental",
+  "short_name": "Boleano",
+  "description": "Jogo arcade: interprete código rápido — 0 ou 1.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0D1117",
+  "theme_color": "#0D1117",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

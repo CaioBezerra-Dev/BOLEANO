@@ -5,13 +5,12 @@ import { useGameLoop } from '../engine/GameLoop'
 export default function BinaryInput() {
   const { currentQuestion, feedback, submitAnswer, gameState } = useGameStore()
   const { loadNextQuestion } = useGameLoop()
-  
+
   const handleAnswer = (answer) => {
     if (feedback !== null || !currentQuestion) return
-    
+
     submitAnswer(answer)
-    
-    // Carrega próxima pergunta após feedback
+
     setTimeout(() => {
       const state = useGameStore.getState()
       if (state.gameState === 'playing' && state.feedback === null && state.lives > 0) {
@@ -19,14 +18,13 @@ export default function BinaryInput() {
       }
     }, 500)
   }
-  
-  // Handlers de teclado
+
   useEffect(() => {
     const handleKeyDown = (e) => {
       const state = useGameStore.getState()
       if (state.gameState !== 'playing') return
       if (state.feedback !== null || !state.currentQuestion) return
-      
+
       if (e.key === '1' || e.key === 'd' || e.key === 'D' || e.key === 'ArrowRight') {
         e.preventDefault()
         state.submitAnswer(1)
@@ -47,22 +45,23 @@ export default function BinaryInput() {
         }, 500)
       }
     }
-    
+
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [loadNextQuestion])
-  
+
   const isDisabled = feedback !== null || !currentQuestion
-  
+
   return (
-    <div className="flex gap-8 justify-center items-center">
+    <div className="flex gap-4 sm:gap-8 justify-center items-center flex-wrap touch-manipulation">
       <button
+        type="button"
         onClick={() => handleAnswer(0)}
         disabled={isDisabled}
         className={`
-          w-32 h-32 rounded-full 
+          w-24 h-24 sm:w-32 sm:h-32 rounded-full
           bg-gh-false/20 border-4 border-gh-false
-          text-gh-false text-6xl font-bold font-mono
+          text-gh-false text-5xl sm:text-6xl font-bold font-mono
           transition-all duration-150
           hover:bg-gh-false/30 hover:scale-105
           active:scale-95 active:bg-gh-false/40
@@ -72,16 +71,17 @@ export default function BinaryInput() {
       >
         0
       </button>
-      
-      <div className="text-gh-text/50 text-2xl font-mono">vs</div>
-      
+
+      <div className="text-gh-text/50 text-xl sm:text-2xl font-mono">vs</div>
+
       <button
+        type="button"
         onClick={() => handleAnswer(1)}
         disabled={isDisabled}
         className={`
-          w-32 h-32 rounded-full 
+          w-24 h-24 sm:w-32 sm:h-32 rounded-full
           bg-gh-true/20 border-4 border-gh-true
-          text-gh-true text-6xl font-bold font-mono
+          text-gh-true text-5xl sm:text-6xl font-bold font-mono
           transition-all duration-150
           hover:bg-gh-true/30 hover:scale-105
           active:scale-95 active:bg-gh-true/40

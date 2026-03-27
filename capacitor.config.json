@@ -1,0 +1,8 @@
+{
+  "appId": "app.boleano.game",
+  "appName": "Boleano",
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "https"
+  }
+}

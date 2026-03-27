@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Boleano</string>
+    <string name="title_activity_main">Boleano</string>
+    <string name="package_name">app.boleano.game</string>
+    <string name="custom_url_scheme">app.boleano.game</string>
+</resources>
